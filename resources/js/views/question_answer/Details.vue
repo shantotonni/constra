@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div class="container-fluid">
-      <breadcrumb :options="['Why Choose Us Details']"/>
+      <breadcrumb :options="['Question Answer']"/>
       <div class="row">
         <div class="col-xl-12">
           <div class="card">
@@ -51,21 +51,21 @@ export default {
   watch: {
     query: function(newQ, old) {
       if (newQ === "") {
-        this.getWhyChooseUsDetails();
+        this.getQuestionAnswer();
       } else {
         this.searchData();
       }
     }
   },
   mounted() {
-    document.title = 'Why Choose Us Details | Ashar Immigration';
-    this.getWhyChooseUsDetails();
+    document.title = 'Question Answer | SSR Global LLC';
+    this.getQuestionAnswer();
   },
   created(){
-    this.getWhyChooseUsDetails();
+    this.getQuestionAnswer();
   },
   methods: {
-    getWhyChooseUsDetails(){
+    getQuestionAnswer(){
       this.isLoading = true;
       axios.get(`/api/why-choose-us-details/${this.$route.params.id}`).then((response)=>{
         this.chooses = response.data.data
@@ -78,7 +78,7 @@ export default {
 
     reload(){
       this.query = "";
-      this.getWhyChooseUsDetails();
+      this.getQuestionAnswer();
       this.$toaster.success('Data Successfully Refresh');
     },
 

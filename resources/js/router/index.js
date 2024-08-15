@@ -33,6 +33,7 @@ import TimeScheduleList from '../views/time_schedule/Index.vue'
 
 import Contact from '../views/contact/Index.vue'
 import CountriesList from '../views/countries/Index.vue'
+import AddressList from '../views/address/Index.vue'
 
 import ChangePassword from '../views/settings/ChangePassword'
 import Setting from '../views/settings/Setting'
@@ -113,6 +114,8 @@ const routes = [
             //colleges
             {path: baseurl + 'college-list', name: 'CollegeList', component: CollegeList},
             {path: baseurl + 'country-list', name: 'CountriesList', component: CountriesList},
+
+            {path: baseurl + 'address', name: 'AddressList', component: AddressList},
 
             //new info module route
             {path: baseurl + 'contact-list', name: 'Contact', component: Contact},

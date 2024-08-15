@@ -29,6 +29,26 @@
                       <input type="text" class="form-control" id="opening_hour" :class="{ 'is-invalid': form.errors.has('opening_hour') }" v-model="form.opening_hour" name="opening_hour">
                       <div class="error" v-if="form.errors.has('opening_hour')" v-html="form.errors.get('opening_hour')" />
                     </div>
+                    <div class="form-group col-lg-6">
+                      <label for="facebook">Facebook</label>
+                      <input type="text" class="form-control" id="facebook" :class="{ 'is-invalid': form.errors.has('facebook') }" v-model="form.facebook" name="facebook">
+                      <div class="error" v-if="form.errors.has('facebook')" v-html="form.errors.get('facebook')" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                      <label for="instagram">Instagram</label>
+                      <input type="text" class="form-control" id="instagram" :class="{ 'is-invalid': form.errors.has('instagram') }" v-model="form.instagram" name="instagram">
+                      <div class="error" v-if="form.errors.has('instagram')" v-html="form.errors.get('instagram')" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                      <label for="twitter">Twitter</label>
+                      <input type="text" class="form-control" id="twitter" :class="{ 'is-invalid': form.errors.has('twitter') }" v-model="form.twitter" name="twitter">
+                      <div class="error" v-if="form.errors.has('twitter')" v-html="form.errors.get('twitter')" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                      <label for="linkedin">LinkedIn</label>
+                      <input type="text" class="form-control" id="linkedin" :class="{ 'is-invalid': form.errors.has('linkedin') }" v-model="form.linkedin" name="linkedin">
+                      <div class="error" v-if="form.errors.has('linkedin')" v-html="form.errors.get('linkedin')" />
+                    </div>
                     <div class="form-group col-lg-2" style="margin-top: 26px">
                       <button type="submit" class="btn btn-success mo-mt-2 float-left" value="Add Menu">Update Settings</button>
                     </div>
@@ -56,6 +76,10 @@ export default {
         mobile: '',
         address: '',
         opening_hour: '',
+        linkedin: '',
+        facebook: '',
+        instagram: '',
+        twitter: '',
       }),
     }
   },
@@ -75,7 +99,6 @@ export default {
     },
     updateSetting(){
       this.form.post('/api/update-setting').then((response)=>{
-        console.log(response)
         this.$toaster.success(response.data.message);
       }).catch((error)=>{
         this.$toaster.error('Something went wrong')

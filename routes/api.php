@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\Api\Frontend\CustomerAuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CollegesController;
@@ -100,6 +101,12 @@ Route::group(['middleware' => ['jwt:api']], function () {
     Route::apiResource('question-answer',QuestionAnswerController::class);
     Route::get('question-answer-details/{id}',[QuestionAnswerController::class,'show']);
     Route::get('search/question-answer/{query}', [QuestionAnswerController::class,'search']);
+
+    //ADDRESS
+
+    Route::apiResource('address',AddressController::class);
+    Route::get('address-details/{id}',[AddressController::class,'show']);
+    Route::get('search/address/{query}', [AddressController::class,'search']);
 
     //time schedule
 

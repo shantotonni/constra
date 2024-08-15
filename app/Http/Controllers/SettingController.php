@@ -130,6 +130,10 @@ class SettingController extends Controller
         $setting->mobile = $request->mobile;
         $setting->address = $request->address;
         $setting->opening_hour = $request->opening_hour;
+        $setting->facebook = $request->facebook;
+        $setting->instagram = $request->instagram;
+        $setting->twitter = $request->twitter;
+        $setting->linkedin = $request->linkedin;
         $setting->save();
         return response()->json(['message'=>'Setting Updated Successfully'],200);
     }
