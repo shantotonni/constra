@@ -50,20 +50,23 @@ class SliderController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Validate image dimensions
-        $imageDimantion = Image::make($request->image);
 
-        if ($imageDimantion->width() != 1920 || $imageDimantion->height() != 800) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Image dimensions must be Width-1920px, Height- 800px.'
-            ]);
-        }
         $slider = Slider::where('id',$request->id)->first();
         $image = $request->image;
 
         if ($image != $slider->image) {
             if ($request->has('image')) {
+
+                // Validate image dimensions
+                $imageDimantion = Image::make($request->image);
+
+                if ($imageDimantion->width() != 1920 || $imageDimantion->height() != 800) {
+                    return response()->json([
+                        'status' => 'error',
+                        'message' => 'Image dimensions must be Width-1920px, Height- 800px.'
+                    ]);
+                }
+
                 //code for remove old file
                 if ($slider->image != '' && $slider->image != null) {
                     $destinationPath = 'images/slider/';

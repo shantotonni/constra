@@ -162,6 +162,7 @@ Route::get('get-pages', [\App\Http\Controllers\Api\Frontend\PagesController::cla
 
 
 Route::get('get-our-blog', [\App\Http\Controllers\Api\Frontend\FrontController::class, 'getOurBlog']);
+Route::get('get-all-address', [\App\Http\Controllers\Api\Frontend\FrontController::class, 'getAddress']);
 
 Route::get('get-all-slider', [\App\Http\Controllers\Api\Frontend\FrontController::class, 'getHomePageSlider']);
 Route::get('get-settings', [\App\Http\Controllers\Api\Frontend\FrontController::class, 'getSettings']);

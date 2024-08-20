@@ -12,6 +12,7 @@ use App\Http\Resources\Program\ProgramCollection;
 use App\Http\Resources\Service\ServiceCollection;
 use App\Mail\VolunteerMail;
 use App\Models\About;
+use App\Models\Address;
 use App\Models\Advisors;
 use App\Models\AskTheBoard;
 use App\Models\Blog;
@@ -414,6 +415,13 @@ class FrontController extends Controller
         return response()->json([
             'status'=>'success',
             'message'=>'Successfully Deleted'
+        ]);
+    }
+
+    public function getAddress(){
+        $address = Address::query()->get();
+        return response()->json([
+           'address' => $address
         ]);
     }
 

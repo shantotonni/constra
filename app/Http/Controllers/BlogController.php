@@ -19,7 +19,7 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-           'image'=>'required|image',
+           'image'=>'required',
            'description' => 'required',
            'title' => 'required'
         ]);
@@ -60,20 +60,20 @@ class BlogController extends Controller
             'title' => 'required'
         ]);
 
-        // Validate image dimensions
-        $imageDimantion = Image::make($request->image);
-        if ($imageDimantion->width() != 407 || $imageDimantion->height() != 270) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Image dimensions must be width-407px, height- 270px'
-            ]);
-        }
-
         $blog = Blog::where('id',$request->id)->first();
         $image = $request->image;
 
         if ($image != $blog->image) {
             if ($request->has('image')) {
+                // Validate image dimensions
+                $imageDimantion = Image::make($request->image);
+                if ($imageDimantion->width() != 407 || $imageDimantion->height() != 270) {
+                    return response()->json([
+                        'status' => 'error',
+                        'message' => 'Image dimensions must be width-407px, height- 270px'
+                    ]);
+                }
+
                 //code for remove old file
                 if ($blog->image != '' && $blog->image != null) {
                     $destinationPath = 'images/blog/';

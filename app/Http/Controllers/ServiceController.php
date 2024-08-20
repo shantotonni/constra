@@ -52,20 +52,20 @@ class ServiceController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Validate image dimensions
-        $imageDimantion = Image::make($request->image);
-        if ($imageDimantion->width() != 405 || $imageDimantion->height() != 300) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Image dimensions must be width-405px, height- 300px'
-            ]);
-        }
-
         $service = Service::where('id',$request->id)->first();
         $image = $request->image;
 
         if ($image != $service->image) {
             if ($request->has('image')) {
+                // Validate image dimensions
+                $imageDimantion = Image::make($request->image);
+                if ($imageDimantion->width() != 405 || $imageDimantion->height() != 300) {
+                    return response()->json([
+                        'status' => 'error',
+                        'message' => 'Image dimensions must be width-405px, height- 300px'
+                    ]);
+                }
+
                 //code for remove old file
                 if ($service->image != '' && $service->image != null) {
                     $destinationPath = 'images/service/';

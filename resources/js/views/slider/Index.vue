@@ -227,7 +227,6 @@ export default {
     update(){
       this.form.busy = true;
       this.form.put(baseurl + "api/sliders/" + this.form.id).then(response => {
-        console.log(response.data)
         if (response.data.status === 'error'){
           this.$toaster.error(response.data.message);
         }else {
