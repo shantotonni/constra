@@ -116,7 +116,6 @@ class FrontController extends Controller
     public function getAllHomePageDate(){
         return response()->json([
            'team' => $this->getTeam(),
-           'country' => $this->getAllCountry(),
            'newses' => $this->getAllNews(),
            'testimonials' => $this->getAllTestimonials(),
            'question_answer' => $this->getAllQA(),
